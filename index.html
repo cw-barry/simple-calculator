@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 0;
+        max-width: 400px;
+        margin: auto;
+      }
+      .main {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 90%;
+        width: 90%;
+        background: white;
+        box-shadow: 4px 10px 16px rgba(0, 0, 0, 0.12);
+        padding: 20px;
+      }
+      .scoreboard {
+        padding: 20px;
+        flex-direction: column;
+        font-size: 20px;
+        text-align: center;
+      }
+      input,
+      button,
+      select,
+      p {
+        font-size: 20px;
+        padding: 10px;
+      }
+      #submit {
+        border: 2px solid blue;
+        width: 100%;
+        height: 40px;
+        padding-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <input id="first" type="number" placeholder="enter first number" />
+      <select id="operation" name="" id="">
+        <option value="add">+</option>
+        <option value="substract">-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+      </select>
+      <input id="second" type="number" placeholder="enter second number" />
+      <div class="scoreboard">
+        <div id="submit">Move Mouse Here!</div>
+        <div>
+          <p>Result</p>
+          <p id="result"></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      let first = document.querySelector('#first');
+      let second = document.querySelector('#second');
+      let operation = document.querySelector('#operation');
+      let submit = document.querySelector('#submit');
+      let result = document.querySelector('#result');
+
+      submit.addEventListener('mouseenter', () => {
+        submit.textContent = 'Now move out mouse from here!';
+      });
+
+      submit.addEventListener('mouseleave', () => {
+        let firstNumber = Number(first.value);
+        let secondNumber = Number(second.value);
+        if (operation.value === 'add') {
+          result.textContent = firstNumber + secondNumber;
+        }
+        if (operation.value === 'substract') {
+          result.textContent = firstNumber - secondNumber;
+        }
+        if (operation.value === 'divide') {
+          result.textContent = firstNumber / secondNumber;
+        }
+        if (operation.value === 'multiply') {
+          result.textContent = firstNumber * secondNumber;
+        }
+        submit.textContent = 'Move Mouse Here!';
+      });
+    </script>
+  </body>
+</html>
